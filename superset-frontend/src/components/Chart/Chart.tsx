@@ -311,14 +311,11 @@ class Chart extends PureComponent<ChartProps, {}> {
       height,
       chartAlert,
       chartStatus,
-      datasource,
       errorMessage,
       chartIsStale,
       queriesResponse = [],
       width,
     } = this.props;
-
-    const databaseName = datasource?.database?.name;
 
     const isLoading = chartStatus === 'loading';
 
@@ -377,9 +374,7 @@ class Chart extends PureComponent<ChartProps, {}> {
           height={height}
           width={width}
         >
-          {isLoading
-            ? this.renderSpinner(databaseName)
-            : this.renderChartContainer()}
+          {this.renderChartContainer()}
         </Styles>
       </ErrorBoundary>
     );
